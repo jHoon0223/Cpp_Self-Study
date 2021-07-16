@@ -4,6 +4,7 @@
         "tuple": "cpp",
         "utility": "cpp",
         "xutility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "ostream": "cpp"
     }
 }
