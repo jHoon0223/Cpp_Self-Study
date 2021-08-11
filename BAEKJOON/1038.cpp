@@ -1,51 +1,48 @@
 #include <iostream>
+#include <vector>
+#include <queue>
 
 using namespace std;
 
-int cnt;
+void FF(int N);
+
+vector<long long> v;
+queue<long long> q;
 
 int main() {
+    cin.tie(NULL), cout.tie(NULL), ios_base::sync_with_stdio(false);
+
     int N;
     cin >> N;
+    v.resize(N+1, 0);
 
-    if (N == 0) {
-        cout << 0;
-        return 0;
-    }
-    else if (N > 1022) {
+    for (int i = 1; i < 10; i++)
+        q.push(i);
+
+    FF(N);
+    
+    if (v[N] || N == 0)
+        cout << v[N];
+    else
         cout << -1;
-        return 0;
-    }
-    else {
-        for (long long i = 1; ; i++) {
-            long long target = i;
-
-            if (target < 10) {
-                cnt++;
-            }
-            else {
-                while(1) {
-                    int tmp1 = target%10;
-                    int tmp2 = (target/10)%10;
-
-                    if (tmp1 >= tmp2)
-                        break;
-
-                    target /= 10;
-
-                    if (target < 10) {
-                        cnt++;
-                        break;
-                    }
-                }
-            }
-            
-            if (cnt == N) {
-                cout << i;
-                break;
-            }
-        }
-    }
 
     return 0;
+}
+
+void FF(int N) {
+    int idx = 1;
+
+    while (!q.empty() && N) {
+        long long target = q.front();
+        q.pop();
+        N--;
+
+        v[idx++] = target;
+
+        int tmp = target % 10;
+        int addNum = 0;
+        while (addNum < tmp) {
+            q.push(target*10 + addNum++);
+        }
+    }
 }

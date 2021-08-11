@@ -11,6 +11,9 @@
         "list": "cpp",
         "unordered_map": "cpp",
         "xhash": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "xlocale": "cpp",
+        "functional": "cpp",
+        "queue": "cpp"
     }
 }
