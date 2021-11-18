@@ -3,24 +3,22 @@
 
 using namespace std;
 
-int BinarySearch(vector<int> v, int target, int low, int high) {
+vector<int> v;
+
+bool BinarySearch(int target, int left, int right) {
     int mid;
 
-    if (low > high) return 0;
-    else {
-        mid = (low+high)/2;
-        if (target == v[mid])
-            return mid;
-        else if (target < v[mid])
-            return BinarySearch(v, target, low, mid-1);
-        else if (target > v[mid])
-            return BinarySearch(v, target, mid+1, high);
+    while (left <= right) {
+        mid = (left+right) / 2;
+
+        if (target == v[mid]) return true;
+        else if (target < v[mid]) right = mid-1;
+        else if (target > v[mid]) left = mid+1;
     }
+    return false;
 }
 
 int main(void) {
-    vector<int> v;
-
     int N;
     cout << "N >> ";
     cin >> N;
@@ -28,12 +26,14 @@ int main(void) {
     for (int i = 0; i < N; i++) 
         v.push_back(i);
 
-    int target, index;
+    int target;
+    bool flag;
     cout << "target >> ";
     cin >> target;
 
-    index = BinarySearch(v, target, 0, v.size());
-    cout << index << " " << v[index];
+    flag = BinarySearch(target, 0, v.size());
+    if (flag) cout << "YES";
+    else cout << "NO";
 
     return 0;
 }
