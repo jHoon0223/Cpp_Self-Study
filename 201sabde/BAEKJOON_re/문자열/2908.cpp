@@ -10,9 +10,11 @@ int main() {
 
     reverse(a.begin(), a.end());
     reverse(b.begin(), b.end());
+    //string reverse
 
     int A = stoi(a);
     int B = stoi(b);
+    //string to int
 
     A > B ? cout << A << '\n' : cout << B << '\n';
 
