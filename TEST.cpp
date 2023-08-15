@@ -1,12 +1,17 @@
-#include <stdio.h>
 #include <iostream>
-
-using namespace std;
-
-int main() {
-    double d = 1.1;
-    printf("%d\n", (int)d);
-    cout << (int)d << endl;
-
+#include <string>
+#include <regex>
+ 
+int main()
+{
+    std::string s = "C++17";
+ 
+    std::string x = "17";
+    std::string y = "20";
+ 
+    s = std::regex_replace(s, std::regex(x), y);
+ 
+    std::cout << s << std::endl;        // C++20
+ 
     return 0;
 }
