@@ -1,9 +1,14 @@
 #include <iostream>
 #include <string>
 #include <regex>
+
+using namespace std;
  
-int main()
-{
+int main() {
+    cin.tie(NULL);
+    cout.tie(NULL);
+    ios::sync_with_stdio(false);
+
     std::string s = "C++17";
  
     std::string x = "17";
