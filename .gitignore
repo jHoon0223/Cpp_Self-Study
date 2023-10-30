@@ -7,6 +7,6 @@
 # Unignore all dirs
 !*/
 
+TEST.cpp
 *.exe
 *.dSYM
-TEST.*
