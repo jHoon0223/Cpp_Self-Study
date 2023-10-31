@@ -20,20 +20,20 @@ int main() {
         }
         else if (num==2) {
             if (s.empty()) {
-                cout << -1 << endl;
+                cout << -1 << '\n';
                 continue;
             }
-            cout << s.top() << endl;
+            cout << s.top() << '\n';
             s.pop();
         }
-        else if (num==3) cout << s.size() << endl;
-        else if (num==4) s.empty() ? cout << 1 << endl : cout << 0 << endl;
+        else if (num==3) cout << s.size() << '\n';
+        else if (num==4) s.empty() ? cout << 1 << '\n' : cout << 0 << '\n';
         else if (num==5) {
             if (s.empty()) {
-                cout << -1 << endl;
+                cout << -1 << '\n';
                 continue;
             }
-            cout << s.top() << endl;
+            cout << s.top() << '\n';
         }
     }
 
