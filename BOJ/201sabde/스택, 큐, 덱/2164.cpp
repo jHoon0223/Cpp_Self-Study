@@ -13,9 +13,7 @@ int main() {
 
     queue<int> q;
 
-    for (int i=1; i<=N; i++) {
-        q.push(i);
-    }
+    for (int i=1; i<=N; i++) q.push(i);
 
     while(1) {
         if (q.size() == 1) break;
