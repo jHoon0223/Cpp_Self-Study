@@ -1,17 +1,40 @@
 #include <iostream>
-#include <string>
+#include <deque>
 
 using namespace std;
- 
-int main() {
+
+deque<int> dq;
+int n,m;
+bool flag[100001]; //0:queue, 1:stack
+
+int main(){
+    ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    ios::sync_with_stdio(false);
+    
+    cin>>n;
+    for(int i=0; i<n; i++){
+        cin>>flag[i];
+    }
 
-    string s;
-    cin >> s;
+    for(int i=0; i<n; i++){
+        int x;
+        cin>>x;
+        if(flag[i]==0) //queue일때만 deque에 원소 삽입
+        dq.push_back(x);
+    }
+    cin>>m;
+    for(int i=0; i<m; i++){
+        int y;
+        cin>>y;
 
-    cout << stoi(s) <<endl;
+        dq.push_front(y);
+        
+        cout<<dq.back()<<" ";
 
-    return 0;
+        dq.pop_back();
+        
+    }
+    //전부 stack일 경우, dq에 미리 넣는 과정없이  새 dq에 push_front, pop_back과정 반복하면 됨.
+
 }
