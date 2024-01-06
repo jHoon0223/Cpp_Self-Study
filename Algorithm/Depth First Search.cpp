@@ -3,8 +3,8 @@
 
 using namespace std;
 
-bool visited[9];
-vector<int> graph[9];
+bool visited[9];        //방문 여부를 나타내주는 bool타입 배열
+vector<int> graph[9];   //그래프를 나타내는 vector 배열
 
 void DFS(int start) {
 	visited[start] = true;
@@ -14,9 +14,9 @@ void DFS(int start) {
 	for (int i=0; i<graph[start].size(); i++) { //인접한 정점의 갯수만큼 탐색
 		int idx = graph[start][i];
 
-		if (!visited[idx]) //해당 정점이 아직 방문한적이 없는 정점이면 재귀적으로 DFS 실행
+		if (!visited[idx])
             DFS(idx);
-	}
+	}   //해당 정점이 아직 방문한적이 없는 정점이면 재귀적으로 DFS 실행 / 방문했던 정점이라면 무시하고 다른 정점을 찾음
 }
 
 int main(void) {
