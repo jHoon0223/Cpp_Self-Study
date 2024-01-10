@@ -10,4 +10,4 @@
 
 TEST.cpp
 *.exe
-*.dSYM.DS_Store
+*.dSYM.DS_Store.DS_Store
