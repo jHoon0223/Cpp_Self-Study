@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <queue>
-#include <vector>
 
 #define MAX 101
 
 using namespace std;
 
 int N;
-vector<int> vR, vG, vB;
 char arr[MAX][MAX];
 bool visited[MAX][MAX] = { false };
 
@@ -89,7 +87,6 @@ int main() {
 
     int total1 = cntR + cntG + cntB;
     int total2 = cntRR + cntBB;
-
     printf("%d %d\n", total1, total2);
 
     return 0;
