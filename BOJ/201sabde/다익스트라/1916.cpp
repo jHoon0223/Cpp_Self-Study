@@ -35,9 +35,9 @@ void dijkstra(int start) {
 }
 
 int main() {
+    cin.tie(0);
+    cout.tie(0);
     ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
 
     int V,E;
     cin >> V >> E;
