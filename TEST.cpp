@@ -1,56 +1,57 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
-#include <queue>
 
+//백준 8979 올림픽
 using namespace std;
-
-int INF = 987654321;
-
-int n, m;
-vector<pair<int, int>> Graph[1001];
-int cost[1001]; // 비용
-
-void dijkstra(int start) {
-	cost[start] = 0;
-	priority_queue<pair<int, int>> pq;
-	pq.push({ start, 0 });
-
-	while (!pq.empty()) {
-		int current = pq.top().first;
-		int dist = -pq.top().second;
-		pq.pop();
-
-		if (cost[current] < dist) continue;
-
-		for (int i = 0; i < Graph[current].size(); i++) {
-			int newCurr = Graph[current][i].first;
-			int newDist = Graph[current][i].second + dist;
-
-			if (newDist < cost[newCurr]) {
-				cost[newCurr] = newDist;
-				pq.push({ newCurr, -newDist });
-			}
-		}
-	}
+struct cty{
+    int gold;
+    int silver;
+    int bronze;
+    int cty_num;
+    int final_num;
+};
+typedef struct cty ct;
+bool cmp(ct a,ct b){
+    if(a.gold != b.gold){
+        return a.gold>b.gold;
+    }
+    else if(a.gold == b.gold && a.silver != b.silver){
+        return a.silver > b.silver;
+    }
+    else if(a.silver == b.silver && a.bronze != b.bronze){
+        return a.bronze > b.bronze;
+    }
 }
-
-int main() {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	cin >> n >> m;
-
-	for (int i = 1; i <= n; i++) cost[i] = INF;
-
-	int a, b, c;
-	for (int i = 0; i < m; i++) {
-		cin >> a >> b >> c;
-		Graph[a].push_back(make_pair(b,c));
-	}
-	cin >> a >> b;
-	dijkstra(a);
-
-	cout << cost[b] << endl;
+int main(void){
+    ct arr[1000];
+    int n,m;
+    cin >> n >> m;
+    for(int i = 0;i<n;i++){
+        int x,y,z,q;
+        cin >> x >> y >> z >> q;
+        arr[i].cty_num = x;
+        arr[i].gold = y;
+        arr[i].silver = z;
+        arr[i].bronze = q;
+    }
+    sort(arr,arr+n,cmp);
+    int first = 1;
+   
+    for(int i = 0;i<n;i++){
+       arr[i].final_num = first;
+       first++;
+    }
+   
+    for(int i = 0;i<n;i++){
+        if(arr[i].gold == arr[i-1].gold && arr[i].silver == arr[i-1].silver && arr[i].bronze == arr[i-1].bronze){
+            arr[i].final_num = arr[i-1].final_num;
+        }
+    }
+    for(int i = 0;i<n;i++){
+        if(arr[i].cty_num == m){
+            cout << arr[i].final_num;
+            break;
+        }
+    }
+   
 }
