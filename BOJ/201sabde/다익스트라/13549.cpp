@@ -9,7 +9,7 @@ using namespace std;
 
 int N,K;
 int visited[MAX][2];
-//[0]엔 방문 여부 / [1]엔 시간 저장
+//[0]엔 방문 여부, [1]엔 시간 저장
 
 struct cmp{
     bool operator()(int n1,int n2){
