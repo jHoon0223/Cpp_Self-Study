@@ -1,5 +1,4 @@
 #include <iostream>
-#include <queue>
 
 using namespace std;
 
@@ -24,17 +23,15 @@ int bfs(int i, int j){
         q.pop();
 
         for(int i = 0; i < 4; i++){
-            int newX = x + dx[i];
-            int newY = y + dy[i];
+            int nx = x + dx[i];
+            int ny = y + dy[i];
 
-            if ((newX>=0 && newX<m) && (newY>=0 && newY<n) &&
-            (visited[newX][newY] == false)) {
-                if (picture[newX][newY] == 1) {
-                    q.push(make_pair(newX,newY));
-                    visited[newX][newY] = true;
-                    area++;
-                }
-            }
+            if(0 > nx || nx >= n || 0 > ny || ny >= m) continue;
+            if(visited[nx][ny] || !picture[nx][ny]) continue;
+            
+            visited[nx][ny] = 1;
+            area++;
+            q.push({nx,ny});
         }
     }
     return area;
