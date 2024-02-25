@@ -5,17 +5,25 @@
 using namespace std;
 
 int M,N;
-int cnt;
 int arr[MAX][MAX];
+int dp[MAX][MAX];
 
 int Dx[4] = { -1, 1, 0, 0 };
 int Dy[4] = { 0, 0, -1, 1 };
 
-void DFS(int x, int y) {
-    if (x == M-1 && y == N-1) {
-        cnt++;
-        return;
+void makeDPtable() {
+    for (int i=0; i<M; i++) {
+        for (int j=0; j<N; j++) {
+            dp[i][j] = -1;
+        }
     }
+}
+
+int DFS(int x, int y) {
+    if (x == M-1 && y == N-1) return 1;
+    if (dp[x][y] != -1) return dp[x][y];
+
+    dp[x][y] = 0;
 
     for (int i=0; i<4; i++) {
         int newX = x + Dx[i];
@@ -23,8 +31,12 @@ void DFS(int x, int y) {
 
         if (newX<0 || newX>=M || newY<0 || newY>=N) continue;
 
-        if (arr[x][y] > arr[newX][newY]) DFS(newX, newY);
+        if (arr[x][y] > arr[newX][newY]) {
+            dp[x][y] += DFS(newX, newY);
+        }
     }
+
+    return dp[x][y];
 }
 
 int main() {
@@ -39,9 +51,9 @@ int main() {
         }
     }
 
-    DFS(0,0);
+    makeDPtable();
 
-    cout << cnt << '\n';
+    cout << DFS(0,0) << '\n';
 
     return 0;
 }
