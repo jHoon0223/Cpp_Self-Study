@@ -42,7 +42,7 @@ int BFS(int x, int y) {
             int newY = Y + Dy[i];
 
             if (newX<0 || newX>=N || newY<0 || newY>=M) continue;
-            if (arr[newX][newY] == 'X') continue;
+            if (arr[newX][newY] == 'X' || visited[newX][newY]) continue;
 
             if (!visited[newX][newY] && arr[newX][newY] == 'P')
                 cnt++;
