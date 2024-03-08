@@ -1,21 +1,20 @@
 #include <iostream>
+
 using namespace std;
 
+int factorial(int n) {
+    if (n <= 1)
+        return 1;
+    else
+        return n*factorial(n-1);
+}
+
 int main() {
-	int N, result = 0;
-	int temp, cnt = 0;
+	int N,K;
+	cin >> N >> K;
 
-	cin >> N;
-	for (int i = 0; i < N; i++) {
-		cin >> temp;
+	int total = factorial(N) / (factorial(K) * factorial(N-K));
+	cout << total << '\n';
 
-		for (int i = 1; i <= temp; i++) {
-			if (temp%i == 0)
-				cnt++;
-		}
-		if (cnt == 2)	//temp가 소수
-			result++;
-		cnt = 0;
-	}
-	cout << result << '\n';
+	return 0;
 }
