@@ -8,8 +8,13 @@
 # Unignore all dirs
 !*/
 
-TEST.cpp
+# 실행파일 ignore
 *.exe
 *.dSYM
 .DS_Store
+
+# .vscode 폴더 ignore
 .vscode/
+
+# TEST.cpp ignore
+TEST.cpp
