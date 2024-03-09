@@ -12,3 +12,5 @@ TEST.cpp
 *.exe
 *.dSYM
 .DS_Store
+.vscode/
+settings.json
