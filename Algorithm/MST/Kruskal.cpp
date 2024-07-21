@@ -95,6 +95,7 @@ int main(void) {
         int cost = edges[i].first;
         int u = edges[i].second.first;
         int v = edges[i].second.second;
+        
         if (!find(u, v)) {
             sum += cost;
             mst.push_back(make_pair(u, v));
