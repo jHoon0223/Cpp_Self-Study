@@ -27,8 +27,6 @@ int main() {
         int target;
         cin >> target;
         DP[target] = 1;
-
-        maxN = max(maxN, target);
     }
 
     SOL();
