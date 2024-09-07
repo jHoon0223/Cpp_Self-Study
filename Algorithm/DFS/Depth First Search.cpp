@@ -19,6 +19,16 @@ void DFS(int start) {
 	}   //해당 정점이 아직 방문한적이 없는 정점이면 재귀적으로 DFS 실행 / 방문했던 정점이라면 무시하고 다른 정점을 찾음
 }
 
+void _DFS(int start) {
+    visited[start] = true;
+    
+    cout << start << " ";
+
+    for (int next : graph[start]) {
+        if (!visited[next]) DFS(next);
+    }
+}
+
 int main(void) {
     graph[1].push_back(2);
     graph[1].push_back(5);
@@ -54,6 +64,11 @@ int main(void) {
     //vector 배열로 그래프 정의
 
     DFS(1);
+
+    cout << endl;
+    fill(visited, visited+9, false);
+
+    _DFS(1);
 
     return 0;
 }
