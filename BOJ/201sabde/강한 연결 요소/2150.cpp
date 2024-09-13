@@ -27,7 +27,7 @@ int DFS(int curr) {
         if (visited[next] == -1) 
             val = min(val, DFS(next));
         else if (node_SCC[next] == -1) 
-            val = min(val, visited[next]);
+            val = min(val, visited[next]);  // Back Edge
     }
 
     if (val == visited[curr]) {
