@@ -1,5 +1,7 @@
 #include <iostream>
 #include <set>
+#include <vector>
+#include <algorithm>
 
 #define MAX 401
 #define INF 99999999
@@ -40,17 +42,32 @@ int main() {
 
     floydWarshall();
 
-    set<int> total;
+    // set<int> total;
+    // for (int i=0; i<V; i++) {
+    //     for (int j=0; j<V; j++) {
+    //         if (i==j && arr[i][j] != INF) {
+    //             total.insert(arr[i][j]);
+    //         }
+    //     }
+    // }
+
+    // if (total.empty()) cout << -1 << '\n';
+    // else cout << *total.begin() << '\n';
+
+    vector<int> total;
     for (int i=0; i<V; i++) {
         for (int j=0; j<V; j++) {
             if (i==j && arr[i][j] != INF) {
-                total.insert(arr[i][j]);
+                total.push_back(arr[i][j]);
             }
         }
     }
 
     if (total.empty()) cout << -1 << '\n';
-    else cout << *total.begin() << '\n';
+    else {
+        sort(total.begin(), total.end());
+        cout << total.front() << '\n';
+    }
 
     return 0;
 }
