@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 #include <algorithm>
 
 #define MAX 2002
@@ -15,6 +16,24 @@ void DFS(int curr) {
 
     for (int next : Graph[curr])
         if (!visited[next]) DFS(next);
+}
+
+void BFS(int curr) {
+    queue<int> q;
+    q.push(curr);
+    visited[curr] = true;
+
+    while (!q.empty()) {
+        int idx = q.front();
+        q.pop();
+
+        for (int next : Graph[idx]) {
+            if (!visited[next]) {
+                q.push(next);
+                visited[next] = true;
+            }
+        }
+    }
 }
 
 int main() {
@@ -35,7 +54,8 @@ int main() {
         cin >> a >> b;
 
         fill(visited, visited+V, false);
-        DFS(a);
+        //DFS(a);
+        BFS(a);
         if (visited[b]) cout << 1 << '\n';
         else cout << 0 << '\n';
     }
