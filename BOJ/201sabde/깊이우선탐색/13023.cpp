@@ -10,21 +10,17 @@ vector<int> Graph[MAX];
 bool visited[MAX] = { false };
 bool flag = false;
 
-void DFS(int start, int cnt) {
-    if (cnt==4) {
+void DFS(int curr, int cnt) {
+    if (cnt == 4) {
         flag = true;
         return;
     }
 
-    visited[start] = true;
-
-    for (int i=0; i<Graph[start].size(); i++) {
-        int idx = Graph[start][i];
-
-        if (!visited[idx]) {
-            DFS(idx, cnt+1);
-
-            visited[idx] = false;
+    visited[curr] = true;
+    for (int next : Graph[curr]) {
+        if (!visited[next]) {
+            DFS(next, cnt+1);
+            visited[next] = false;
         }
     }
 }
