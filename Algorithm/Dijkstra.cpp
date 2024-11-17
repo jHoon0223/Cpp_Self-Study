@@ -25,11 +25,11 @@ void dijkstra(int start) {
         if (cost[current] < distance) continue;
         //현재 노드까지의 거리가 저장된 거리보다 크다면 그냥 스킵
 
-        for (int i=0; i<Graph[current].size(); i++) {   //현재 방문한 정점의 주변 정점 모두 조사
-            int next = Graph[current][i].first;         //현재 정점을 거쳐서 갈 다음 정점
-            int nextDist = distance + Graph[current][i].second;     //현재 정점을 거쳐 다음 정점을 갈때의 거리
+        for (pair<int,int> curr : Graph[current]) {     //현재 방문한 정점의 주변 정점 모두 조사
+            int next = curr.first;                      //현재 정점을 거쳐서 갈 다음 정점
+            int nextDist = distance + curr.second;      //현재 정점을 거쳐 다음 정점을 갈때의 거리
 
-            if (nextDist < cost[next]) {    //기존 거리보다 현재 방문 정점을 거친 거리가 더 작다면
+            if (nextDist < cost[next]) {     //기존 거리보다 현재 방문 정점을 거친 거리가 더 작다면
                 cost[next] = nextDist;
                 pq.push(make_pair(next, -nextDist));
                 //cost 배열에 저장된 값 갱신 후 pq에 push
@@ -80,12 +80,12 @@ int main() {
     //그래프 생성. vector배열 이용하여 선언, first인자는 목적지, second인자는 목적지 까지의 거리
 
     int startingPoint;
-    cout << "시작 지점을 입력하세요 : ";
+    cout << "시작 지점을 입력하세요 >> ";
     cin >> startingPoint;
     dijkstra(startingPoint);
 
     for (int i=1; i<=V; i++) {
-        cout << "시작점 " << startingPoint << " ~ " << i << "까지의 최단 거리 : " << cost[i] << endl;
+        cout << "시작점 " << startingPoint << " ~ " << i << " 까지의 최단 거리 >> " << cost[i] << endl;
     }
 
     return 0;
